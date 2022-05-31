@@ -64,16 +64,16 @@ def torch_fit(train_handler,test_handler,num_epochs,lr,model):
             print(f'Mean loss value for test: {mean_loss_test_value}')
             print(f'Accuracy: {mean_acc}')
         
-            if norm_score < acc:
+            if norm_score < mean_acc:
                 torch.save(model,'model.pth')
-                norm_score = acc
+                norm_score = mean_acc
 
         model.train()
 
 
-    plt.plot(mean_loss_train, labels='Train loss')
-    plt.plot(mean_loss_test, labels='Test loss')
-    plt.plot(accuracy_list, labels='accuracy')
+    plt.plot(mean_loss_train, label='Train loss')
+    plt.plot(mean_loss_test, label='Test loss')
+    plt.plot(accuracy_list, label='accuracy')
     plt.legend()
     plt.show()
 
