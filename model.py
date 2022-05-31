@@ -1,3 +1,6 @@
+from operator import mod
+from statistics import mode
+from joblib import PrintTime
 import torch
 import torch.nn as nn
 torch.manual_seed(0)
@@ -26,6 +29,5 @@ class FashionNetwork(nn.Module):
         out=self.logits(act3)
 
         return out
-
 
 
