@@ -65,7 +65,10 @@ def torch_fit(train_handler,test_handler,num_epochs,lr,model):
             print(f'Accuracy: {mean_acc}')
         
             if norm_score < mean_acc:
-                torch.save(model,'model.pth')
+                torch.save(model.state_dict(),'checkpoint.pth')
+                state_dict = torch.load('checkpoint.pth')
+                print(state_dict.keys())
+                print(model.load_state_dict(state_dict))
                 norm_score = mean_acc
 
         model.train()
