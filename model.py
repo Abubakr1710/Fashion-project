@@ -2,7 +2,8 @@ import torch
 import torch.nn as nn
 torch.manual_seed(0)
 
-class NeuralNetwork(nn.Module):
+
+class FashionNetwork(nn.Module):
     def __init__(self, input_dim, num_hidden1, num_hidden2, num_hidden3, output_size):
         super().__init__()
         self.linear1=nn.Linear(input_dim, num_hidden1)
