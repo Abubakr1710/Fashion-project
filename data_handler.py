@@ -7,7 +7,7 @@ from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
 
 
-def load_batch(path_dir: str, batch_size:int =64)-> Tuple:
+def load_batch(path_dir: str, batch_size:int =128)-> Tuple:
 
     """
     Return a tuple of tensors batches which will be downloads FashionMNIST dataset from pytorch
