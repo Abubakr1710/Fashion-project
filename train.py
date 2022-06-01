@@ -7,7 +7,10 @@ import torch
 import torch.nn as nn
 from torch import optim 
 import torch.nn.functional as F 
+import time
 torch.manual_seed(0)
+
+starting_time = time.time()
 
 train_handler, test_handler=dh.load_batch('~/.pytorch/F_MNIST_data/')
 
@@ -45,7 +48,7 @@ def torch_fit(train_handler,test_handler,num_epochs,lr,model):
     ###for --> test
         model.eval()
         with torch.no_grad():
-            equals_list=[]
+            
             loss_test=[]
             accuracy_list_epoch=[]
             for j,(imagest,labelst) in enumerate(iter(test_handler)):
@@ -72,7 +75,8 @@ def torch_fit(train_handler,test_handler,num_epochs,lr,model):
                 norm_score = mean_acc
 
         model.train()
-
+    final_time = time.time()- starting_time
+    print(f'Training time took: {final_time}')
 
     plt.plot(mean_loss_train, label='Train loss')
     plt.plot(mean_loss_test, label='Test loss')
@@ -80,9 +84,9 @@ def torch_fit(train_handler,test_handler,num_epochs,lr,model):
     plt.legend()
     plt.show()
 
-ans=torch_fit(train_handler=train_handler,test_handler=test_handler,num_epochs=10,lr=0.001,model=model)
+ans=torch_fit(train_handler=train_handler,test_handler=test_handler,num_epochs=500,lr=0.001,model=model)
 
-
+# epoch size must be > 100
 
     
 
